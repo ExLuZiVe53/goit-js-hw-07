@@ -3,7 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-const setGalleryToListHTML = document.querySelector("gallery");
+const galleryHtml = document.querySelector(".gallery");
 
 function createGalleryMarkup(galleryItems) {
   return galleryItems
@@ -22,4 +22,4 @@ function createGalleryMarkup(galleryItems) {
     .join("");
 }
 
-setGalleryToListHTML("beforeend", createGalleryMarkup(galleryItems));
+galleryHtml("beforeend", createGalleryMarkup(galleryItems));
