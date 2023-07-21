@@ -3,6 +3,8 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
+const setGalleryToListHTML = document.querySelector("gallery");
+
 function createGalleryMarkup(galleryItems) {
   return galleryItems
     .map(
