@@ -1,8 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
-
 const galleryHtml = document.querySelector(".gallery");
 
 function createGalleryMarkup(galleryItems) {
@@ -23,3 +21,13 @@ function createGalleryMarkup(galleryItems) {
 }
 
 galleryHtml.insertAdjacentHTML("beforeend", createGalleryMarkup(galleryItems));
+
+window.addEventListener("click", onClick);
+
+function onClick(event) {
+  event.preventDefault();
+  if (event.currentTarget === event.target.contains("gallery__item")) {
+    return;
+  }
+  console.log(event.target);
+}
