@@ -22,4 +22,4 @@ function createGalleryMarkup(galleryItems) {
     .join("");
 }
 
-galleryHtml("beforeend", createGalleryMarkup(galleryItems));
+galleryHtml.insertAdjacentHTML("beforeend", createGalleryMarkup(galleryItems));
