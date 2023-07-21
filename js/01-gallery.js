@@ -20,4 +20,4 @@ function createGalleryMarkup(galleryItems) {
     .join("");
 }
 
-createGalleryToListMarkup("beforeend", createGalleryMarkup(galleryItems));
+setGalleryToListHTML("beforeend", createGalleryMarkup(galleryItems));
