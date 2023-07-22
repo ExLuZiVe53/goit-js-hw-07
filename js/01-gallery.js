@@ -12,14 +12,16 @@ function onClick(event) {
   showImg(event.target);
 }
 function showImg(target) {
-  const connection = basicLightbox.create(
-    `<img src="${target.dataset.source}" width="800" height="600">`
+  const instance = basicLightbox.create(
+    `<div class="modal">
+    <img src="${target.dataset.source}" width="800" height="600">
+    </div>`
   );
-  connection.show();
+  instance.show();
 
   galleryHtml.addEventListener("keydown", (event) => {
     if (event.code === "Escape") {
-      connection.close();
+      instance.close();
     }
   });
 }
@@ -29,18 +31,16 @@ function createGalleryMarkup(galleryItems) {
     .map(
       ({ description, preview, original }) =>
         `<li class="gallery__item">
-        <a class="gallery__link" href="${original}">
-        <img class="gallery__image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-        />
-        </a>
-        </li>`
+    <a class="gallery__link" href="large-image.jpg">
+    <img class="gallery__image"
+    src="${preview}"
+    data-source="${original}"
+    alt="${description}"
+    />
+    </a>
+    </li>`
     )
     .join("");
 }
 
 galleryHtml.insertAdjacentHTML("beforeend", createGalleryMarkup(galleryItems));
-
-window.addEventListener("click", onClick);
