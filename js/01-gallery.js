@@ -14,7 +14,7 @@ function onClick(event) {
 function showImg(target) {
   const instance = basicLightbox.create(
     `<div class="modal">
-    <img src="${target.dataset.source}" width="800" height="600">
+    <img src="${target.dataset.source}" width="900" height="600">
     </div>`
   );
   instance.show();
