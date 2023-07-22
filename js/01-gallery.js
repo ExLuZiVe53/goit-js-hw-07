@@ -2,6 +2,27 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryHtml = document.querySelector(".gallery");
+galleryHtml.addEventListener("click", onClick);
+
+function onClick(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+  showImg(event.target);
+}
+function showImg(target) {
+  const connection = basicLightbox.create(
+    `<img src="${target.dataset.source}" width="800" height="600">`
+  );
+  connection.show();
+
+  galleryHtml.addEventListener("keydown", (event) => {
+    if (event.code === "Escape") {
+      connection.close();
+    }
+  });
+}
 
 function createGalleryMarkup(galleryItems) {
   return galleryItems
@@ -23,11 +44,3 @@ function createGalleryMarkup(galleryItems) {
 galleryHtml.insertAdjacentHTML("beforeend", createGalleryMarkup(galleryItems));
 
 window.addEventListener("click", onClick);
-
-function onClick(event) {
-  event.preventDefault();
-  if (event.currentTarget === event.target.contains("gallery__item")) {
-    return;
-  }
-  console.log(event.target);
-}
