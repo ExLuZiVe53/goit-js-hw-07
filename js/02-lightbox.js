@@ -2,9 +2,10 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryEl = document.querySelector(".gallery");
-galleryEl.innerHTML("beforeend", createGallery(galleryItems));
 
-let gallery = new SimpleLightbox(".gallery a", {
+gallerySet(createGallery(galleryItems));
+
+let lightbox = new SimpleLightbox(".gallery a", {
   captions: true,
   captionsData: "alt",
   captionPosition: "bottom",
@@ -12,11 +13,18 @@ let gallery = new SimpleLightbox(".gallery a", {
 });
 
 function createGallery(galleryItems) {
-  return galleryItems.map(({ descripion, preview, original }) => {
-    `<li class="gallery__item">
+  return galleryItems
+    .map(
+      ({ description, preview, original }) =>
+        `<li class="gallery__item">
         <a class="gallery__link" href="${original}">
-            <img class="gallery__image" src="${preview}" alt="${descripion}" />
+            <img class="gallery__image" src="${preview}" alt="${description}" />
         </a>
-    </li>`;
-  });
+    </li>`
+    )
+    .join("");
+}
+
+function gallerySet(gallery) {
+  galleryEl.innerHTML = gallery;
 }
